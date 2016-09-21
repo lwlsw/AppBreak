@@ -5,6 +5,7 @@
 
 @interface FBApplicationInfo : FBBundleInfo
 @end
+NSMutableDictionary *blacklist = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.skylerk99.nosub.plist"];
 
 static NSString *libPath = @"/usr/lib/PalBreak.dylib";
 
@@ -12,7 +13,7 @@ static NSString *libPath = @"/usr/lib/PalBreak.dylib";
 
 - (NSDictionary *)environmentVariables {
 	NSDictionary *originalEnv = %orig;
-	if ([self.bundleIdentifier isEqualToString:@"com.yourcompany.PPClient"]) {
+	if ([[blacklist objectForKey:self.bundleIdentifier] boolValue]) {
 		NSMutableDictionary *env = [originalEnv mutableCopy] ?: [NSMutableDictionary dictionary];
 		NSString *oldDylibs = env[@"DYLD_INSERT_LIBRARIES"];
 		NSString *newDylibs = oldDylibs ? [NSString stringWithFormat:@"%@:%@", libPath, oldDylibs] : libPath;
@@ -24,3 +25,4 @@ static NSString *libPath = @"/usr/lib/PalBreak.dylib";
 }
 
 %end
+

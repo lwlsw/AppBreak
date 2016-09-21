@@ -1,4 +1,4 @@
-include theos/makefiles/common.mk
+include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = PalBreakSB
 PalBreakSB_FILES = Tweak.xm

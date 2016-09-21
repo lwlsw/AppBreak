@@ -1,1 +1,7 @@
-{ Filter = { Bundles = ( "com.yourcompany.PPClient" ); }; }
+{
+	Filter = {
+		Bundles = (
+			"com.apple.UIKit",
+		);
+	};
+}

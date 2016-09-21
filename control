@@ -1,9 +1,10 @@
-Package: com.sharedroutine.palbreak
+Package: com.sharedroutine.skylerk99.palbreak
 Name: PalBreak
 Depends: mobilesubstrate
-Version: 1.1
+Conflicts: com.sharedroutine.palbreak
+Version: 1.2
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
-Maintainer: Janosch
-Author: Janosch
+Description: Block Substrate in any particular app using a blacklist in the settings. (Same as PalBreak but allows it to work for any app. To get PayPal working install and enable PayPal in the settings.)
+Maintainer: Janosch, Skylerk99
+Author: Janosch, Skylerk99
 Section: Tweaks

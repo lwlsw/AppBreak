@@ -3,6 +3,9 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <substrate.h>
+NSMutableDictionary *blacklist = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.skylerk99.nosub.plist"];
+
+%group Hooks
 
 #ifdef DEBUG
 #define PPDebugLog(fmt, ...) NSLog((@"%s:%d: "fmt),__FUNCTION__,__LINE__,##__VA_ARGS__)
@@ -32,4 +35,14 @@ static void ppfix_image_added(const struct mach_header *mh, intptr_t slide) {
 __attribute__((constructor)) static void pp_init() {
 	PPDebugLog(@"[PalBreak] Init");
 	_dyld_register_func_for_add_image(&ppfix_image_added);
+}
+
+%end
+
+%ctor {
+	NSString *bundle = [[NSBundle mainBundle] bundleIdentifier];
+	/* put bundle you DON'T want to inject into here */
+	if (![[blacklist objectForKey:bundle] boolValue]) {
+		%init(Hooks);
+	}
 }
