@@ -26,3 +26,26 @@ static NSString *libPath = @"/usr/lib/PalBreak.dylib";
 
 %end
 
+@interface FBSystemService : NSObject
+
++(id)sharedInstance;
+- (void)exitAndRelaunch:(bool)arg1;
+
+@end
+
+static void respring(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object,  CFDictionaryRef userInfo) {
+   // [(FBSystemService *)[UIApplication sharedApplication] exitAndRelaunch:YES];
+//[[%c(FBSystemService) sharedInstance] exitAndRelaunch:YES];
+[[%c(FBSystemService) sharedInstance] exitAndRelaunch:NO];
+
+
+}
+
+%ctor {
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                NULL,
+                                (CFNotificationCallback)respring,
+                                CFSTR("respringDevice"),
+                                NULL,
+                                CFNotificationSuspensionBehaviorDeliverImmediately);
+}

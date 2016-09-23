@@ -1,6 +1,7 @@
+GO_EASY_ON_ME = 1
 export TARGET=iphone:clang:latest
 export ARCHS=armv7 arm64
-THEOS_DEVICE_IP = 10.36.56.162
+THEOS_DEVICE_IP = 172.20.10.1
 
 DEBUG=0
 FINALPACKAGE=1

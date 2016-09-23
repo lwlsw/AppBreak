@@ -1,16 +1,28 @@
 #include "nosubRootListController.h"
 #define nosubPath @"/User/Library/Preferences/com.skylerk99.nosub.plist"
 
+@protocol PreferencesTableCustomView
+- (id)initWithSpecifier:(id)arg1;
+
+@optional
+- (CGFloat)preferredHeightForWidth:(CGFloat)arg1;
+- (CGFloat)preferredHeightForWidth:(CGFloat)arg1 inTableView:(id)arg2;
+@end
+@interface PSTableCell ()
+- (id)initWithStyle:(int)style reuseIdentifier:(id)arg2;
+@end
+
 @implementation nosubRootListController
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [[self loadSpecifiersFromPlistName:@"Root" target:self] retain];
+
 	}
-
 	return _specifiers;
-}
 
+
+}
 
 -(id) readPreferenceValue:(PSSpecifier*)specifier {
 	NSDictionary *nosubSettings = [NSDictionary dictionaryWithContentsOfFile:nosubPath];
@@ -34,6 +46,14 @@
 
 
 - (void)kill {
-//	system("killall -9 SpringBoard");
+	CFNotificationCenterPostNotification (CFNotificationCenterGetDarwinNotifyCenter(),
+										  CFSTR("respringDevice"),
+										  NULL,
+										  NULL,
+										  false);
+}
+
+-(void)git {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/Skylerk99/PalBreak"]];
 }
 @end

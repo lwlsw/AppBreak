@@ -32,6 +32,30 @@
 			<key>ALChangeNotification</key>
 			<string>com.skylerk99.nosub.settingschanged</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>action</key>
+			<string>kill</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Github</string>
+			<key>action</key>
+			<string>git</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>NoSub</string>

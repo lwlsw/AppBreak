@@ -3,7 +3,7 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <substrate.h>
-NSMutableDictionary *blacklist = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.skylerk99.nosub.plist"];
+NSMutableDictionary *blacklist;
 
 %group Hooks
 
@@ -39,7 +39,19 @@ __attribute__((constructor)) static void pp_init() {
 
 %end
 
-%ctor {
+static void loadPrefs()
+{
+blacklist = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.skylerk99.nosub.plist"];
+	//[prefs release];
+}
+
+
+%ctor 
+{
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.skylerk99.nosub.settingschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
+	loadPrefs();
+                                       NULL;
+
 	NSString *bundle = [[NSBundle mainBundle] bundleIdentifier];
 	/* put bundle you DON'T want to inject into here */
 	if (![[blacklist objectForKey:bundle] boolValue]) {
