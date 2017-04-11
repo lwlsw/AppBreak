@@ -26,7 +26,7 @@
 			<key>ALSettingsDefaultValue</key>
 			<string>0</string>
 			<key>ALSettingsPath</key>
-			<string>/var/mobile/Library/Preferences/com.skylerk99.nosub.plist</string>
+			<string>/var/mobile/Library/Preferences/com.lwlsw.appbreak.plist</string>
 			<key>ALSingleEnabledMode</key>
 			<false/>
 			<key>ALChangeNotification</key>
