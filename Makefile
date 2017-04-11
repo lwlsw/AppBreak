@@ -9,10 +9,10 @@ FINALPACKAGE=1
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = AppBreak
-PalBreak_FILES = Tweak.xm
-PalBreak_FRAMEWORKS = UIKit
-PalBreak_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
-PalBreak_INSTALL_PATH = /usr/lib/
+AppBreak_FILES = Tweak.xm
+AppBreak_FRAMEWORKS = UIKit
+AppBreak_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
+AppBreak_INSTALL_PATH = /usr/lib/
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
