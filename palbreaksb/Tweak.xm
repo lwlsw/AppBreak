@@ -7,7 +7,7 @@
 @end
 NSMutableDictionary *blacklist = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.skylerk99.nosub.plist"];
 
-static NSString *libPath = @"/usr/lib/PalBreak.dylib";
+static NSString *libPath = @"/usr/lib/AppBreak.dylib";
 
 %hook FBApplicationInfo
 
