@@ -1,5 +1,5 @@
 #include "nosubRootListController.h"
-#define nosubPath @"/User/Library/Preferences/com.skylerk99.nosub.plist"
+#define nosubPath @"/User/Library/Preferences/com.lwlsw.appbreak.plist"
 
 @protocol PreferencesTableCustomView
 - (id)initWithSpecifier:(id)arg1;
