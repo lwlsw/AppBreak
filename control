@@ -1,5 +1,5 @@
 Package: com.sharedroutine.skylerk99.lwlsw.appbreak
-Name: PalBreak
+Name: AppBreak
 Depends: mobilesubstrate
 Conflicts: com.sharedroutine.palbreak
 Version: 1.3
